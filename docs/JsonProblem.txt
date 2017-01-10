@@ -1,0 +1,9 @@
+ 1: Convert data to String format
+		
+		$scope.user.name=JSON.stringify($scope.returnname);
+		
+2:  Convert data to Object format
+
+		$scope.user.email=JSON.parse($scope.returnemail);
+		
+3:	

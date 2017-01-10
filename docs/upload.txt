@@ -1,0 +1,26 @@
+<body ng-app="fileUpload" ng-controller="MyCtrl">
+ <input type="file" ngf-select ng-model="picFile"   
+             accept="image/*">
+  <img  ngf-thumbnail="picFile" class="thumb" >
+</body>
+
+
+
+
+//inject angular file upload directives and services.
+var app = angular.module('fileUpload', ['ngFileUpload']);
+
+app.controller('MyCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+   
+}]);
+
+
+
+
+.thumb {
+    width: 200px;
+    height: 200px;
+    float: none;
+    position: relative;
+    top: 7px;
+}

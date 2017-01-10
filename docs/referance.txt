@@ -1,0 +1,28 @@
+			<<<<<<<<<<<<<<<<    display icon on hover		>>>>>>>>>>>>>>>>>
+			
+<div class="profile-pic">
+	<img src="https://c1.staticflickr.com/5/4023/5154094149_8c1345f634.jpg">
+	<div class="edit"><a href="#"><i class="fa fa-pencil fa-lg"></i></a></div>
+</div>
+
+.profile-pic {
+	position: relative;
+	display: inline-block;
+}
+
+.profile-pic:hover .edit {
+	display: block;
+}
+
+.edit {
+	padding-top: 7px;	
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+.edit a {
+	color: #000;
+}

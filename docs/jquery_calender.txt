@@ -1,0 +1,138 @@
+											
+											<<<<<<<<<<<<<<<<<<     1: CALL BY ID	  >>>>>>>>>>>>>>>>>>>>
+ <p class="input-group col-sm-6">
+		 <input type="text" class="form-control newdatepickerafter" datetime="MM-dd-yyyy" ng-model='apvd.movein_date' value="12-23-2016"  placeholder='MM-DD-YYYY'  name="moveindate" required
+				id="datedesiremoveland" is-open="focus" ng-focus="focus=true"  ng-required="true" close-text="Close"/>
+		  <span class="input-group-btn">
+			<button type="button" class="btn btn-default" showcalendar="datedesiremoveland"  ng-click="focus=true" style="line-height: 23px;"><i class="glyphicon glyphicon-calendar"></i></button>
+		  </span>
+		 <div class="help-block col-sm-offset-5" ng-messages="cpform.moveindate.$error" ng-if="cpform.moveindate.$touched  || submitted2">
+	 <p ng-message="required" class='required'>This field is required.</p>
+	 <p ng-message="date" class='required'>Valid date format is MM-DD-YYYY.</p>
+	 <p ng-message="dateDisabled" class='required'>Date out of valid range.</p>
+ </p>
+ <script>
+  $(document).ready(function () {
+		$timeout(function () {
+			  $('.newdatepicker').datetimepicker({
+				  mask: '19-39-9999',
+				  yearOffset: 0,
+				  timepicker: false,
+				  format: 'm-d-Y',
+				  formatDate: 'm-d-Y'
+			  });
+
+			  $('.newdatepickerafter').datetimepicker({
+				  mask: '19-39-9999',
+				  yearOffset:0,
+				  lang:'ch',
+				  timepicker:false,
+				  format: 'm-d-Y',
+				  formatDate: 'm-d-Y',
+				  minDate:'-01-01-1970', // yesterday is minimum date
+				  maxDate:'+01-02-2000' // and tommorow is maximum date calendar
+			  });
+
+			  $('.newdatepickerBefore').datetimepicker({
+				  mask: '19-39-9999',
+				  yearOffset: 0,
+				  timepicker: false,
+				  format: 'm-d-Y',
+				  formatDate: 'm-d-Y',
+				  minDate:'0', // yesterday is minimum date
+				  maxDate:'02-01-1970' // and tommorow is maximum date calendar
+			  });
+		  });
+	  };
+
+	 });
+ </script>
+ 
+ app.directive('showcalendar', function () {
+	return {
+		restrict: 'AEC',
+		link: function (scope, element, attrs) {
+			$(function () {
+				element.click(function () {
+					$("#" + attrs.showcalendar).datetimepicker("show");
+				});
+			});
+
+		}
+	}
+});
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+							<<<<<<<<<<<<<<<<<<<<<		2: CALL BY PARENT INPUTBOX		>>>>>>>>>>>>>>>>>>>>>>>
+
+<p class="input-group">
+  <input type="text" class="form-control newdatepicker" datetime="MM-dd-yyyy" ng-model='pi.birth_date'  placeholder='MM-DD-YYYY' name="dobdate" required
+		 is-open="focus" ng-focus="focus=true" ng-required="true" close-text="Close"  maxlength="10"/>
+  <span class="input-group-btn">
+	<button type="button" class="btn btn-default" showcalendar ng-click="focus=true" style="font-size:16px;"><i class="glyphicon glyphicon-calendar"></i></button>
+  </span>
+   <div class="help-block">
+	  <p ng-if="doberror" class='required'>Sorry Your Age is Below 18 Year.</p>
+   </div>
+   <div class="help-block" ng-messages="firstapp.dobdate.$error" ng-if="firstapp.dobdate.$touched || submitted">
+		<p ng-message="required" class='required'>This field is required.</p>
+		<p ng-message="date" class='required'>Valid date format is MM-DD-YYYY.</p>
+		<p ng-message="date-disabled" class='required'>Date out of valid range.</p>
+		<p ng-message="dateDisabled" class='required'>Date out of valid range.</p>
+   </div>
+</p>
+
+<script>
+$(document).ready(function () {
+	$timeout(function () {
+		  $('.newdatepicker').datetimepicker({
+			  mask: '19-39-9999',
+			  yearOffset: 0,
+			  timepicker: false,
+			  format: 'm-d-Y',
+			  formatDate: 'm-d-Y'
+		  });
+
+		  $('.newdatepickerafter').datetimepicker({
+			  mask: '19-39-9999',
+			  yearOffset:0,
+			  lang:'ch',
+			  timepicker:false,
+			  format: 'm-d-Y',
+			  formatDate: 'm-d-Y',
+			  minDate:'-01-01-1970', // yesterday is minimum date
+			  maxDate:'+01-02-2000' // and tommorow is maximum date calendar
+		  });
+
+		  $('.newdatepickerBefore').datetimepicker({
+			  mask: '19-39-9999',
+			  yearOffset: 0,
+			  timepicker: false,
+			  format: 'm-d-Y',
+			  formatDate: 'm-d-Y',
+			  minDate:'0', // yesterday is minimum date
+			  maxDate:'02-01-1970' // and tommorow is maximum date calendar
+		  });
+	  });
+  };
+
+});
+</script>
+
+app.directive('showcalendar', function () {
+    return {
+        restrict: 'AEC',
+        link: function (scope, element, attrs) {
+            $(function () {
+                element.click(function () {
+                    element.parent().prev("input").datetimepicker("toggle");
+                });
+            });
+           
+        }
+    }
+});
+

@@ -1,0 +1,49 @@
+---------------select in another div on click------------------------
+
+------Html-section--------
+<div class="row prod">
+	<h1 class="prodh1 col-sm-6 col-sm-offset-3">Multiple Platform</h1>
+	<div class="col-sm-5 col-sm-offset-1">
+
+		<div ng-repeat="x in productList" ng-click="setClickedValue(x)" style="cursor: pointer">
+			<div ng-class="{active : selectedProduct === x}" style="padding: 5px">
+				<h3 class="prodTitle">{{x.title}}</h3>
+				<p class="prod-p">{{x.detail}}</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-sm-6" style=" margin-top: 35px">
+		<img class="img-responsive center-block prodImg" ng-src="{{selectedProduct.image}}">
+
+	</div>
+</div>
+
+
+-----------JS-Section---------
+
+$scope.productList=[
+        {
+            "title":"Channels",
+            "image":"assets/img/3.jpg",
+            "detail":"Organize your team conversations in open channels. Make a channel for a project,"
+
+        },{
+            "title":"Private Channels",
+            "image":"assets/img/2.jpg",
+            "detail":"For sensitive information  Make a channel for a project."
+
+        },{
+            "title":"Direct Messages",
+            "image":"assets/img/4.jpg",
+            "detail":"Sensitive information  Make a channel for a project."
+
+        }];
+    
+    
+
+    $scope.selectedProduct=$scope.productList[0];
+
+    $scope.setClickedValue=function (x) {
+        $scope.selectedProduct=x;
+    };

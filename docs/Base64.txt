@@ -1,0 +1,29 @@
+        <<<<<<<<<    USE of BASE64 with LOCAL Storage    >>>>>>>>>
+
+    var app = angular.module("app", [ "base64"]);
+
+    app.controller("loginctrl",['$scope','$base64',function($scope,$base64) {
+
+        if($scope.checkboxdata===true){
+            var encodedid=$base64.encode($scope.username);
+               var encodedpsw=$base64.encode($scope.password);
+
+               localStorage.setItem('awqewwer', JSON.stringify(encodedid));
+               localStorage.setItem('asdasdfacsd', JSON.stringify(encodedpsw));
+               console.log("Yooh, your name and email is saved in the storege.");
+           }
+           else {
+
+               console.log("your name and email is not saved in the storege.");
+           }
+
+
+           var newusername = localStorage.getItem('awqewwer');//username
+                var newpassword = localStorage.getItem('asdasdfacsd');//password
+
+                var decodednm=JSON.parse(newusername);
+                var decodedpsw=JSON.parse(newpassword);
+
+                $scope.username=$base64.decode(decodednm);
+                $scope.password=$base64.decode(decodedpsw);
+       }])

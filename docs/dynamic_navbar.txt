@@ -1,0 +1,67 @@
+			-----------------Making Trasparent Navbarafter some offset---------------------
+			
+<div>
+
+    <nav class="navscroll navbar navbar2 navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header navbar-header2">
+                <button type="button" class="navbar-toggle navbar-toggle2 collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ><img src="assets/img/oxloop_logo.jpg"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-collapse2" id="bs-example-navbar-collapse-1">
+                <ul class="nav nav2 navbar-nav navbar-right">
+                    <li><a ui-sref="home" class="_Gs"><label>Home</label></a></li>
+                    <li><a ui-sref="product" class="_Gs "><label>Products</label></a></li>
+                    <li><a ui-sref="login" class="log_in"><label>Login</label></a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+
+------JS section--------
+
+app .directive('navbarDirective',function() {
+    return{
+        restrict:'AEC',
+        templateUrl:'htmlpage/navbar.html',
+        replace:'true',
+
+        link:function(scope, element, attrs){
+            $(function(){
+                $('.navscroll').css({"background-color":"transparent","border-color":"transparent"});
+                $('.nav2 li a').css("color","rgba(255, 255, 255, 0.8)");
+                $('.nav2 li a:hover').css("color","rgba(255, 255, 255, 1)");
+                $('.nav2 li .log_in label').css("border","2px solid white");
+
+                $(window).scroll(function(){
+                    if($(this).scrollTop()>75){
+                        $('.navscroll').css({"background-color":"white","border-color":"#e7e7e7"});
+                        $('.nav2 li a').css("color","rgba(0, 0, 0, 0.8)");
+                        $('.nav2 li a:hover').css("color","black");
+
+                        $('.nav2 li .log_in label').css("border","2px solid gray");
+                    }else{
+                        $('.navscroll').css({"background-color":"transparent","border-color":"transparent"});
+                        $('.nav2 li a').css("color","rgba(255, 255, 255, 0.8)");
+                        $('.nav2 li a:hover').css("color","rgba(255, 255, 255, 1)");
+                        $('.nav2 li .log_in label').css("border","2px solid white");
+                    }
+                });
+            });
+
+        }
+
+    };
+
+
+});
